@@ -1,0 +1,107 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Oswald', sans-serif;
+}
+
+.top {
+  background-color: whitesmoke;
+  color: #2eb6aa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  text-align: center;
+}
+
+.top h1 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 5vw;
+  letter-spacing: 0.2em;
+  margin-left: 0.2em;
+}
+
+.top p {
+  margin-top: 0;
+  font-size: 25px;
+  letter-spacing: 0.2em;
+  margin-left: 0.2em;
+}
+
+.main {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.main h2 {
+  margin-bottom: 15px;
+  font-size: 25px;
+  letter-spacing: 0.1em;
+}
+
+.main p {
+  margin-top: 50px;
+  margin-bottom: 20px;
+  letter-spacing: 0.1em;
+}
+
+.main .flash {
+  color: #ff7d6e;
+  background: #ffebe9;
+  letter-spacing: 0.1em;
+}
+
+input {
+  margin:0 auto;
+	display: block;
+	position: relative;
+	width: 160px;
+	padding: 0.5em;
+	text-align: center;
+	text-decoration: none;
+  color: #fff;
+  background: #2eb6aa;
+  letter-spacing: 0.2em;
+}
+
+input:hover {
+	 opacity:0.8;
+	 cursor: pointer;
+	 text-decoration: none;
+}
+
+textarea {
+  background-color: whitesmoke;
+  color: black;
+  outline: none;
+  border: 1px solid #aaa;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  width: 25vw;
+  margin-top: 20px;
+  border-radius: 3px;
+  letter-spacing: 0.1em;
+  font-weight: bold;
+}
+
+input:focus,
+textarea:focus {
+  box-shadow: 0 0 7px #1abc9c;
+  border: 1px solid #1abc9c;
+}

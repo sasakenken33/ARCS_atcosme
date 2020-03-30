@@ -1,0 +1,27 @@
+<section class="top">
+  <div class="container">
+    <h1>ARCS-@cosme</h1>
+    <p>@cosmeの商品レビューを自動収集します</p>
+  </div>
+</section>
+<section class="main">
+  <div class="container">
+    <h2>Please put info here</h2>
+    <div class="flash">
+      <% if flash.notice.present? %>
+        <%= flash.notice %>
+      <% end %>
+    </div>
+    <div class="form">
+      <%= form_tag("/reviews/scrape") do %>
+        <textarea placeholder=" Item Name Here" name="name"></textarea>
+        <br>
+        <textarea placeholder=" URL Here" name="page_url"></textarea>
+        <br>
+        <textarea placeholder=" How many reviews?" name="rev_count"></textarea>
+        <br>
+        <input value="START" type="submit"/>
+      <% end %>
+    </div>
+  </div>
+</section>
