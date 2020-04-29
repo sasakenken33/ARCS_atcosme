@@ -19,6 +19,10 @@
   font-family: 'Oswald',"M PLUS Rounded 1c", sans-serif;
 }
 
+:root {
+  font-size: 62.5%;
+}
+
 .top {
   background-color: whitesmoke;
   color: #2eb6aa;
@@ -32,9 +36,9 @@
 .top h1 {
   margin-top: 0;
   margin-bottom: 10px;
-  font-size: 5vw;
-  letter-spacing: 0.2em;
-  margin-left: 0.2em;
+  font-size: 6rem;
+  letter-spacing: 0.5rem;
+  margin-left: 0.5rem;
 }
 
 .main {
@@ -44,25 +48,24 @@
 }
 
 .main h2 {
-  margin-bottom: 15px;
-  font-size: 25px;
-  letter-spacing: 0.1em;
-}
-
-.main p {
-  margin-top: 50px;
-  margin-bottom: 20px;
-  letter-spacing: 0.1em;
+  padding-top: 2rem;
+  font-size: 3rem;
 }
 
 .main .flash {
   color: #ff7d6e;
   background: #ffebe9;
   letter-spacing: 0.1em;
+  font-size: 1rem;
 }
 
 .form {
   margin:0 auto;
+  padding-top: 5rem;
+}
+
+dt {
+  font-size: 1rem;
 }
 
 .textbox {
@@ -72,9 +75,9 @@
   border: 1px solid #aaa;
   -webkit-transition: all .3s;
   transition: all .3s;
-  width: 25vw;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  width: 30rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   border-radius: 3px;
   letter-spacing: 0.1em;
   font-weight: bold;
@@ -84,13 +87,15 @@ input {
   margin:0 auto;
 	display: block;
 	position: relative;
-	width: 160px;
-	padding: 0.5em;
+	width: 15rem;
+  padding: 0.5em;
+  margin-top: 5rem;
 	text-align: center;
 	text-decoration: none;
   color: #fff;
   background: #2eb6aa;
   letter-spacing: 0.2em;
+  font-size: 1rem;
 }
 
 input:hover {
@@ -103,4 +108,59 @@ input:focus,
 .textbox:focus {
   box-shadow: 0 0 7px #1abc9c;
   border: 1px solid #1abc9c;
+}
+#status {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+@media screen and (min-width:768px){
+  section.top {
+    height: 40vh;
+  }
+  section.main {
+    height: 60vh;
+  }
+  .main h2 {
+    padding-top: 2rem;
+    font-size: 3rem;
+  }
+  .form {
+    margin:0 auto;
+    padding-top: 5rem;
+  }
+  dt {
+    font-size: 2rem;
+  }
+  input {
+    width: 30rem;
+    font-size: 1rem;
+  }
+}
+
+@media screen and (min-width:990px){
+  section.top {
+    height: 40vh;
+  }
+  section.main {
+    height: 60vh;
+  }
+  .main h2 {
+    padding-top: 2rem;
+    font-size: 3rem;
+  }
+  .main .flash {
+    font-size: 2rem;
+  }
+  .form {
+    margin:0 auto;
+    padding-top: 5rem;
+  }
+  dt {
+    font-size: 1.5rem;
+  }
+  input {
+    width: 15rem;
+    font-size: 1rem;
+  }
 }

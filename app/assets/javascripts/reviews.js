@@ -1,13 +1,7 @@
-document.addEventListener("DOMContentLoaded", function() {
-  document.getElementById("btn").addEventListener("onclick", function () {
-    let xhr = new XMLHttpRequest();
-    let status = document.getElementById("status");
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState === 4) {
-
-      } else {
-        status.textContent = "処理中・・・";
-      }
-    }
-  }, false);
-}, false);
+// 読み込みが完了したら
+document.addEventListener('turbolinks:load', function () {
+  document.querySelector("#btn").addEventListener("click", function() {
+    let status = document.querySelector(".loader.hidden")
+    status.classList.remove("hidden");
+  });
+});
