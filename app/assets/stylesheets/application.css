@@ -52,13 +52,18 @@
   font-size: 3rem;
 }
 
-.main .flash {
-  color: #ff7d6e;
-  background: #ffebe9;
+.main .flashes {
   letter-spacing: 0.1em;
   font-size: 1rem;
 }
-
+.flashes .alert{
+  color: #ff7d6e;
+  background: #ffebe9;
+}
+.flashes .success{
+  color: #1abc9c;
+  background:honeydew;
+}
 .form {
   margin:0 auto;
   padding-top: 5rem;
@@ -125,6 +130,9 @@ input:focus,
     padding-top: 2rem;
     font-size: 3rem;
   }
+  .main .flashes{
+    font-size: 1.5rem;
+  }
   .form {
     margin:0 auto;
     padding-top: 5rem;
@@ -149,7 +157,7 @@ input:focus,
     padding-top: 2rem;
     font-size: 3rem;
   }
-  .main .flash {
+  .main .flashes {
     font-size: 2rem;
   }
   .form {
