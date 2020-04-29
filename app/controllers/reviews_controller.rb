@@ -1,28 +1,30 @@
 class ReviewsController < ApplicationController
+  require 'nokogiri'
+  require 'open-uri'
+  require 'rubyXL'
   def top
   end
 
   def scrape
-
-    require 'nokogiri'
-    require 'open-uri'
-    require 'rubyXL'
-    
     #カウンターの追加
     count = 0
 
-    #商品名を変数paramsで受け取
+    #商品名を変数paramsで受け取る
     input_name = params[:name]
 
     #入力フォームの値を変数paramsで受け取る
     input_url = params[:page_url]
     unless input_url[/https:\/\/www.cosme.net\/product\/product_id\/\d{8}\/top/]
-      flash[:notice] = "正しいURLを入力してください"
+      flash[:alert] = "URLの形式は、https:/www.cosme.net/product/product_id/数字6or8桁/top　です"
       redirect_to("/") and return
     end
 
     #取得レビュー数を変数paramsで受け取る
     limit = params[:rev_count]
+    unless limit[/[+-]?\d+/]
+      flash[:alert] = "整数値を入力してください"
+      redirect_to("/") and return
+    end
 
     #変数tableの空配列を作成し、date_setを配列要素として格納する
     table = []
@@ -31,7 +33,6 @@ class ReviewsController < ApplicationController
     url_lists = doc.css("div.product-inst-review").to_s
     review_url = url_lists[/https:\/\/www.cosme.net\/product\/product_id\/\d{8}\/review\/\d{9}/]
     
-
     #取得レビュー数回スクレイピングする
     while count <= limit.to_i
       
@@ -96,7 +97,6 @@ class ReviewsController < ApplicationController
 
       #カウンターを追加
       count += 1
-      
     end
 
     #フォーマットエクセルを選択
@@ -119,7 +119,6 @@ class ReviewsController < ApplicationController
       l+=1
     end
 
-
     #2ページ目
     worksheet_1 = workbook[1]
     worksheet_1.sheet_name = "レビュー文単位版"
@@ -140,10 +139,8 @@ class ReviewsController < ApplicationController
     end
 
     #保存
-
     workbook.write("@cosmeレビュー収集結果＿#{input_name}.xlsx")
-    flash[:notice]="レビュー収集が完了しました。"
-
+    flash[:success]="レビュー収集が完了しました。"
     redirect_to("/")
   end
 end
