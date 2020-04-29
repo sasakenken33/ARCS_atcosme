@@ -6,10 +6,17 @@
 <section class="main">
   <div class="container">
     <h2>Please put info here</h2>
-    <div class="flash">
-      <% if flash.notice.present? %>
-        <%= flash.notice %>
-      <% end %>
+    <div class="flashes">
+      <div class="alert">
+        <% if flash[:alert] %>
+          <%= flash[:alert] %>
+        <% end %>
+      </div>
+      <div class="success">
+        <% if flash[:success] %>
+          <%= flash[:success] %>
+        <% end %>
+      </div>
     </div>
     <div class="loader hidden">Loading...</div>
     <div class="form">
