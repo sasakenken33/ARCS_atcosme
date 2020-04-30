@@ -141,8 +141,7 @@ class ReviewsController < ApplicationController
     #保存
     file_name = "@cosmeレビュー収集結果＿#{input_name}.xlsx"
     workbook.write(file_name)
-    dlfile = Rails.root.join(file_name)
-    send_file dlfile
+    send_file("#{Rails.root}/@cosme_format.xlsx")
     flash[:success]="レビュー収集が完了しました。"
     redirect_to("/")
   end
