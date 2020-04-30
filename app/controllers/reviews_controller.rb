@@ -139,7 +139,9 @@ class ReviewsController < ApplicationController
     end
 
     #保存
-    workbook.write("@cosmeレビュー収集結果＿#{input_name}.xlsx")
+    file_name = "@cosmeレビュー収集結果＿#{input_name}.xlsx"
+    workbook.write(file_name)
+    send_file "/home/sasaken/ARCS/#{file_name}"
     flash[:success]="レビュー収集が完了しました。"
     redirect_to("/")
   end
