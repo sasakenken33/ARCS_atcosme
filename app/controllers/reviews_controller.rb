@@ -14,7 +14,7 @@ class ReviewsController < ApplicationController
 
     #入力フォームの値を変数paramsで受け取る
     input_url = params[:page_url]
-    unless input_url[/https:\/\/www.cosme.net\/product\/product_id\/\d{8}\/top/]
+    unless input_url[/https:\/\/www.cosme.net\/product\/product_id\/\d{3,8}\/top/]
       flash[:alert] = "URLの形式は、https:/www.cosme.net/product/product_id/数字6or8桁/top　です"
       redirect_to("/") and return
     end
@@ -37,8 +37,12 @@ class ReviewsController < ApplicationController
     while count <= limit.to_i
       
       #文字コードをUTF-8に変換（@cosmeの文字コードはShift_JISなので）
-      doc = Nokogiri::HTML.parse(open(review_url, "r:Shift_JIS:UTF-8").read)
-      
+      begin
+        doc = Nokogiri::HTML.parse(open(review_url, "r:Shift_JIS:UTF-8").read)
+      rescue 
+        flash[:alert] = "エラーが発生しました。"
+        redirect_to("/") and return
+      end
       #配列data_setに代入する各データ（名前・年齢・肌質・星・ステータス１・ステータス２・日付・投稿本文）を抜き出す
 
       #ブランド名/商品名
@@ -139,16 +143,16 @@ class ReviewsController < ApplicationController
     end
 
     #保存
-    file_name = "@cosmeレビュー収集結果＿#{input_name}.xlsx"
-    workbook.write(file_name)
-    send_file Rails.root.join("@cosme_format.xlsx")
-    flash[:success]="レビュー収集が完了しました。"
+    session[:file_name] = "@cosmeレビュー収集結果＿#{input_name}.xlsx"
+    workbook.write(session[:file_name])
+    send_file Rails.root.join(session[:file_name])
+    flash[:success]="レビュー収集が完了しました。.xlsx形式でDLできます！"
     redirect_to("/")
   end
 
   def download
-    filepath = Rails.root.join("@cosme_format.xlsx")
+    filepath = Rails.root.join(session[:file_name])
     stat = File::stat(filepath)
-    send_file(filepath, :filename => 'test.xlsx', :length => stat.size)
+    send_file(filepath, :filename => session[:file_name], :length => stat.size)
   end
 end

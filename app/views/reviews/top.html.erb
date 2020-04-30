@@ -35,8 +35,8 @@
         </dl>
       <%= f.submit "START", id:"btn"%>
       <% end %>
-      <%= form_with url:"/reviews/download" do |f| %>
-      <%= f.submit "ダウンロードSTART" %>
+      <% if session[:file_name] %>
+        <%= link_to 'download', reviews_download_path, class:"btn" %> 
       <% end %>
     </div>
   </div>
