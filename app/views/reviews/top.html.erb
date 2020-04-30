@@ -33,7 +33,10 @@
           <dt>取得レビュー数</dt>
           <dd><%= f.text_field :rev_count , class:"textbox" %></dd>
         </dl>
-      <%= f.submit "START", class:"remote: true", id:"btn"%>
+      <%= f.submit "START", id:"btn"%>
+      <% end %>
+      <%= form_with url:"/reviews/download" do |f| %>
+      <%= f.submit "ダウンロードSTART" %>
       <% end %>
     </div>
   </div>

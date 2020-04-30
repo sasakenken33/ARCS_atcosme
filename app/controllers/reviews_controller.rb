@@ -145,4 +145,10 @@ class ReviewsController < ApplicationController
     flash[:success]="レビュー収集が完了しました。"
     redirect_to("/")
   end
+
+  def download
+    filepath = Rails.root.join("@cosme_format.xlsx")
+    stat = File::stat(filepath)
+    send_file(filepath, :filename => 'test.xlsx', :length => stat.size)
+  end
 end
